@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/wsxq2/work/modeling/install/lslidar_driver/include/**",
+        "/home/wsxq2/work/modeling/install/lslidar_msgs/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/wsxq2/work/modeling/src/Lslidar_ROS2_driver/lslidar_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
