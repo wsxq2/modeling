@@ -1,0 +1,17 @@
+string protocol
+float64 delta_ms
+string hex
+float64 ax_g
+float64 ay_g
+float64 az_g
+float64 gx_dps
+float64 gy_dps
+float64 gz_dps
+float64 mx
+float64 my
+float64 mz
+float64 bar
+float64 roll
+float64 pitch
+float64 yaw
+float64 temperature
