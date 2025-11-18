@@ -17,15 +17,15 @@ def generate_launch_description():
                                 parameters=[driver_config],
                                 output='screen'
                                 )
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        arguments=['-d', rviz_config],
-        output='screen'
-    )
+    # rviz_node = Node(
+    #     package='rviz2',
+    #     executable='rviz2',
+    #     name='rviz2',
+    #     arguments=['-d', rviz_config],
+    #     output='screen'
+    # )
 
     return LaunchDescription([
         driver_node,
-        rviz_node
+        # rviz_node
     ])
