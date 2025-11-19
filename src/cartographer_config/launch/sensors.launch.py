@@ -37,14 +37,24 @@ def generate_launch_description():
         )
 
     # IMU Node
-    imu_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            PathJoinSubstitution([
-                FindPackageShare('fdilink_ahrs_ROS2'),
-                'launch',
-                'ahrs_driver.launch.py'
-            ])
-        ])
+    imu_node = Node(
+        package="fdilink_ahrs",
+        executable="ahrs_driver_node",
+        parameters=[{'if_debug_': False,
+            'serial_port_':'/dev/wheeltec_FDI_IMU_GNSS',
+            'serial_baud_':921600,
+            'imu_topic':'/imu',
+            'imu_frame_id_':'imu_link',
+            'mag_pose_2d_topic':'/mag_pose_2d',
+            'Magnetic_topic':'/magnetic',
+            'Euler_angles_topic':'/euler_angles',
+            'gps_topic':'/gps/fix',
+            'twist_topic':'/system_speed',
+            'NED_odom_topic':'/NED_odometry',
+            'device_type_':1}],
+        output="screen",
+        respawn=True,
+        respawn_delay=2
     )
     
     # IMU Node
@@ -74,7 +84,7 @@ def generate_launch_description():
     return LaunchDescription([
         imu_frame_id_arg,
         robot_state_publisher_node,
-        imu_launch,
+        imu_node,
         lidar_launch
     ])
 
