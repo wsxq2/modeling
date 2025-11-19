@@ -37,17 +37,28 @@ def generate_launch_description():
         )
 
     # IMU Node
-    imu_node = Node(
-        package='ray_imu_ros2',
-        executable='ray_imu_node',
-        name='ray_imu_node',
-        parameters=[{
-            'imu_frame_id': LaunchConfiguration('imu_frame_id')
-        }],
-        output='screen',
-        respawn=True,
-        respawn_delay=2
+    imu_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            PathJoinSubstitution([
+                FindPackageShare('fdilink_ahrs_ROS2'),
+                'launch',
+                'ahrs_driver.launch.py'
+            ])
+        ])
     )
+    
+    # IMU Node
+    # imu_node = Node(
+    #     package='ray_imu_ros2',
+    #     executable='ray_imu_node',
+    #     name='ray_imu_node',
+    #     parameters=[{
+    #         'imu_frame_id': LaunchConfiguration('imu_frame_id')
+    #     }],
+    #     output='screen',
+    #     respawn=True,
+    #     respawn_delay=2
+    # )
     
     # LiDAR Launch File
     lidar_launch = IncludeLaunchDescription(
@@ -63,7 +74,7 @@ def generate_launch_description():
     return LaunchDescription([
         imu_frame_id_arg,
         robot_state_publisher_node,
-        imu_node,
+        imu_launch,
         lidar_launch
     ])
 
